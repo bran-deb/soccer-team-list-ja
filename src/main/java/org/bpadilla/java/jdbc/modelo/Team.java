@@ -6,6 +6,15 @@ public class Team {
     private String nombre;
     private Integer valor;
 
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", valor=" + valor +
+                '}';
+    }
+
     public Team() {
     }
 
