@@ -1,25 +1,21 @@
 package org.bpadilla.java.jdbc;
 
+import org.bpadilla.java.jdbc.modelo.Team;
+import org.bpadilla.java.jdbc.repositorio.TeamRepositorioImpl;
+import org.bpadilla.java.jdbc.repositorio.Repositorio;
+import org.bpadilla.java.jdbc.util.ConexionBasedatos;
+
 import java.sql.*;
 
 public class EjemploJdbc {
     public static void main(String[] args) {
+        //auto close conn, stmt, resultado dentro del try para hacer una sola connection
+        try (Connection conn = ConexionBasedatos.getInstance()){
+            //listamos el repositorio
+            Repositorio<Team> repositorio = new TeamRepositorioImpl();
+            repositorio.listar().forEach(p-> System.out.println(p.getNombre()));
 
-        String url = "jdbc:mysql://localhost:3306/java_curso?serverTimezone=UTC";
-        String username = "root";
-        String password = "sasa";
-        try {
-            Connection conn = DriverManager.getConnection(url,username,password);
-            Statement stmt = conn.createStatement();
-            ResultSet resultado = stmt.executeQuery("SELECT * FROM productos");
-
-            while (resultado.next()){
-                System.out.println(resultado.getString("nombre"));
-            }
-            resultado.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
+        } catch(SQLException e){
             e.printStackTrace();
         }
     }
