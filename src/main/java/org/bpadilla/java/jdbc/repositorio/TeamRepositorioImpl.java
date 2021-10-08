@@ -51,7 +51,7 @@ public class TeamRepositorioImpl implements Repositorio<Team> {
 
 
     @Override
-    public void guardar(Team team) {
+    public void guardar(@org.jetbrains.annotations.NotNull Team team) {           //not null
         String sql;
         if (team.getId() != null && team.getId() > 0) {
             sql = "UPDATE teams SET nombre=?,valor=? WHERE id=?";                 //update

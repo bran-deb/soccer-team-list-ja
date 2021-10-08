@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class UsaDBInsert {
     public static void main(String[] args) {
-        //auto close conn, stmt, resultado dentro del try para hacer una sola connection (solo define recursos que usen autoClose)
+        //auto close conn dentro del try para hacer una sola connection
         try (Connection conn = ConexionBasedatos.getInstance()){
             //listamos el repositorio
             Repositorio<Team> repositorio = new TeamRepositorioImpl();
@@ -26,7 +26,7 @@ public class UsaDBInsert {
             //insert team
             System.out.println("======Insertar team========");
             Team team = new Team();
-            team.setNombre("España");
+            team.setNombre("Paraguay");
             team.setValor(8);
             repositorio.guardar(team);
             System.out.println("Team creado con exito");

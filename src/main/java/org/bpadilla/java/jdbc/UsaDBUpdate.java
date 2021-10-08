@@ -24,8 +24,8 @@ public class UsaDBUpdate {
             System.out.println("======Editar team========");
             Team team = new Team();
             team.setId(5L);
-            team.setNombre("Uruguay");
-            team.setValor(3);
+            team.setNombre("Peru");
+            team.setValor(9);
             repositorio.guardar(team);
             System.out.println("Team editado con exito");
             repositorio.listar().forEach(System.out::println);
